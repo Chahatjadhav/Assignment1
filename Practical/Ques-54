@@ -1,0 +1,41 @@
+///54.	Write a C++ program to print all prime numbers between two given numbers using a for loop.
+#include <iostream>
+using namespace std;
+
+int main() {
+    int low, high;
+
+    cout << "Enter two numbers (intervals): ";
+    cin >> low >> high;
+
+    if (low > high) {
+        int temp = low;
+        low = high;
+        high = temp;
+    }
+
+    cout << "Prime numbers between " << low << " and " << high << " are:\n";
+
+    for (int num = low; num <= high; num++) {
+        bool is_prime = true;
+
+        if (num <= 1) {
+            is_prime = false;
+        }
+        else {
+            for (int i = 2; i * i <= num; i++) {
+                if (num % i == 0) {
+                    is_prime = false;
+                    break;
+                }
+            }
+        }
+
+        if (is_prime) {
+            cout << num << " ";
+        }
+    }
+    cout << endl; 
+    
+    return 0;
+}
